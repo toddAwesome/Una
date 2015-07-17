@@ -13,9 +13,13 @@
 
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_login">Login to your account</string>
+    <string name="title_activity_sign_up">Sign up for an Una account</string>
+    <string name="title_activity_forgotten">Reset password</string>
 
     <string name="menu_logout_label">Logout</string>
+
+    <string name="DarkTeal_Color">#00c373</string>
+
 
 </resources>

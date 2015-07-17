@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     protected ProgressBar myProgressBar;
 
     protected TextView mySignUpTextView;
+    protected TextView myForgottenView;
 
 
 
@@ -39,6 +40,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        myForgottenView = (TextView) findViewById(R.id.forgotLabel);
+        myForgottenView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, ForgottenActivity.class);
                 startActivity(intent);
             }
         });
