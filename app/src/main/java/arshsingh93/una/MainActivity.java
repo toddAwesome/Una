@@ -26,7 +26,7 @@ import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
-    //this is tabCha branch
+    
     private static final String TAG = MainActivity.class.getSimpleName();
 
     /**
