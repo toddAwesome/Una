@@ -30,37 +30,36 @@ public class LoginActivity extends AppCompatActivity {
     protected TextView myForgottenView;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.e(TAG, "started onCreate");
+        //Log.e(TAG, "started onCreate");
         super.onCreate(savedInstanceState);
-        Log.e(TAG, "called super");
+        //Log.e(TAG, "called super");
         setContentView(R.layout.activity_login);
 
-        Log.e(TAG, "going to initialize textview for signup");
+        //Log.e(TAG, "going to initialize textview for signup");
         mySignUpTextView = (TextView) findViewById(R.id.signupText);
         mySignUpTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e(TAG, "sign up text clicked, headed to sign up activity");
+                //Log.e(TAG, "sign up text clicked, headed to sign up activity");
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
         });
 
-        Log.e(TAG, "going to initialize textview for forgotten");
+        //Log.e(TAG, "going to initialize textview for forgotten");
         myForgottenView = (TextView) findViewById(R.id.forgotLabel);
         myForgottenView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e(TAG, "forgotten text clicked, headed to forgotten activity");
+                //Log.e(TAG, "forgotten text clicked, headed to forgotten activity");
                 Intent intent = new Intent(LoginActivity.this, ForgottenActivity.class);
                 startActivity(intent);
             }
         });
 
-        Log.e(TAG, "going to initialize progressbar and edittexts and button");
+        //Log.e(TAG, "going to initialize progressbar and edittexts and button");
         myProgressBar = (ProgressBar) findViewById(R.id.loginProgressBar);
         myProgressBar.setVisibility(View.INVISIBLE); //originally not seen
 
@@ -73,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                 String username = myUsername.getText().toString();
                 String password = myPassword.getText().toString();
 
-                username = username.trim();
+                username = username.trim().toLowerCase();
                 password = password.trim();
 
                 if (username.isEmpty() || password.isEmpty()) {

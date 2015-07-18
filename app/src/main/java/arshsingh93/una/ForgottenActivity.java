@@ -1,6 +1,7 @@
 package arshsingh93.una;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,7 +38,7 @@ public class ForgottenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String email = myEmail.getText().toString();
-                email = email.trim();
+                email = email.trim().toLowerCase();
 
                 if (email.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(ForgottenActivity.this);
@@ -57,16 +58,21 @@ public class ForgottenActivity extends AppCompatActivity {
                                 // An email was successfully sent with reset instructions.
 
                                 AlertDialog.Builder builder = new AlertDialog.Builder(ForgottenActivity.this);
-                                builder.setMessage("Please check your email for a reset link.")
-                                        .setTitle("Reset successful")
-                                        .setPositiveButton(android.R.string.ok, null);
+                                builder.setMessage("A reset link will be sent to your email shortly.")
+                                        .setTitle("Reset Link")
+                                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                //navigate to login screen
+                                                Intent intent = new Intent(ForgottenActivity.this, LoginActivity.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(intent);
+                                            }
+                                        });
                                 AlertDialog dialog = builder.create();
                                 dialog.show();
 
-                                Intent intent = new Intent(ForgottenActivity.this, LoginActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
+
                             } else {
                                 // Something went wrong. Look at the ParseException to see what's up.
 

@@ -2,6 +2,8 @@ package arshsingh93.una;
 
 import java.util.Locale;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
@@ -25,9 +27,7 @@ import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
 
-
     private static final String TAG = MainActivity.class.getSimpleName();
-
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
 
@@ -59,8 +58,13 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             navigateToLogin();
         } else {
             Log.i(TAG, currentUser.getUsername());
-        }
 
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setMessage("Hello " + currentUser.get("origName"))
+                    .setPositiveButton(android.R.string.ok, null);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
 
 
         // Set up the action bar.
@@ -150,12 +154,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
 
 
-
-
-
-
-
-
+//==============
 
 
 

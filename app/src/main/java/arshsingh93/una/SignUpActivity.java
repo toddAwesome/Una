@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,8 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 public class SignUpActivity extends AppCompatActivity {
+
+    private static final String TAG = SignUpActivity.class.getSimpleName();
 
     protected EditText myUsername;
     protected EditText myPassword;
@@ -33,7 +36,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         mySignUpProgressBar = (ProgressBar) findViewById(R.id.signUpProgressBar);
         mySignUpProgressBar.setVisibility(View.INVISIBLE);
-
         myUsername = (EditText) findViewById(R.id.usernameField);
         myPassword = (EditText) findViewById(R.id.passwordField);
         myEmail = (EditText) findViewById(R.id.emailField);
@@ -41,15 +43,16 @@ public class SignUpActivity extends AppCompatActivity {
         mySignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = myUsername.getText().toString();
+                String originalUsername = myUsername.getText().toString().trim();
                 String password = myPassword.getText().toString();
                 String email = myEmail.getText().toString();
 
-                username = username.trim();
+                String lowerUsername = originalUsername.toLowerCase(); //this is the username is all lowercase letters.
                 password = password.trim();
-                email = email.trim();
+                email = email.trim().toLowerCase();
 
-                if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
+
+                if (originalUsername.isEmpty() || password.isEmpty() || email.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
                     builder.setMessage(R.string.signup_error_message)
                             .setTitle(R.string.signup_error_title)
@@ -59,9 +62,10 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     toggleRefresh();
                     ParseUser newUser = new ParseUser();
-                    newUser.setUsername(username);
+                    newUser.setUsername(lowerUsername); //sign up with lowercase username for uniqueness
                     newUser.setPassword(password);
                     newUser.setEmail(email);
+                    newUser.put("origName", originalUsername); //keep the original username intact for display
                     newUser.signUpInBackground(new SignUpCallback() {
                         @Override
                         public void done(ParseException e) {
