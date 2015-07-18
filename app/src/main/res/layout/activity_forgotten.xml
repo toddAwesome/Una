@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/emailField"
+        android:id="@+id/forgottenEmailField"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="93dp"
@@ -23,18 +23,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Reset my password"
-        android:id="@+id/resetButton"
+        android:id="@+id/forgottenResetButton"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:textColor="#ffffff"
-        android:background="@string/DarkTeal_Color" />
+        android:background="#00c373" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="You will receive a password \n  reset link in your email"
         android:id="@+id/textView"
-        android:layout_below="@+id/resetButton"
+        android:layout_below="@+id/forgottenResetButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="75dp"
         android:textSize="18sp" />
@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/forgottenProgressBar"
-        android:layout_below="@+id/resetButton"
+        android:layout_below="@+id/forgottenResetButton"
         android:layout_centerHorizontal="true"
         android:indeterminate="false" />
 </RelativeLayout>

@@ -2,8 +2,9 @@ package arshsingh93.una;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,9 +16,10 @@ import android.widget.TextView;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private static final String TAG = LoginActivity.class.getSimpleName();
 
     protected EditText myUsername;
     protected EditText myPassword;
@@ -31,28 +33,34 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.e(TAG, "started onCreate");
         super.onCreate(savedInstanceState);
+        Log.e(TAG, "called super");
         setContentView(R.layout.activity_login);
 
-
+        Log.e(TAG, "going to initialize textview for signup");
         mySignUpTextView = (TextView) findViewById(R.id.signupText);
         mySignUpTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e(TAG, "sign up text clicked, headed to sign up activity");
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
         });
 
+        Log.e(TAG, "going to initialize textview for forgotten");
         myForgottenView = (TextView) findViewById(R.id.forgotLabel);
         myForgottenView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e(TAG, "forgotten text clicked, headed to forgotten activity");
                 Intent intent = new Intent(LoginActivity.this, ForgottenActivity.class);
                 startActivity(intent);
             }
         });
 
+        Log.e(TAG, "going to initialize progressbar and edittexts and button");
         myProgressBar = (ProgressBar) findViewById(R.id.loginProgressBar);
         myProgressBar.setVisibility(View.INVISIBLE); //originally not seen
 

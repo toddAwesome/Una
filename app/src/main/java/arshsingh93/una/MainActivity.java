@@ -52,8 +52,10 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
+
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser == null) {
+            Log.e(TAG, "Current user is null so move to login screen");
             navigateToLogin();
         } else {
             Log.i(TAG, currentUser.getUsername());
