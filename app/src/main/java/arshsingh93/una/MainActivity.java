@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     //this is tabCha branch
     private static final String TAG = MainActivity.class.getSimpleName();
 
+
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
