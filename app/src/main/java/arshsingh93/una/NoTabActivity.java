@@ -1,5 +1,8 @@
 package arshsingh93.una;
 
+import android.app.ListFragment;
+import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -15,10 +18,13 @@ public class NoTabActivity extends ActionBarActivity {
         setContentView(R.layout.activity_no_tab);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+        Fragment fragment = null;
+        Intent intent = getIntent();
+        if (intent.getStringExtra(ProfileFragment.SHOW).equals(ProfileFragment.SHOW_COLOR_OPTIONS)) {
+            fragment = new colorListFragment();
 
-
-
-
+        }
 
     }
 

@@ -23,7 +23,10 @@ import arshsingh93.una.dummy.DummyContent;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class colorListFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class colorListFragment extends android.support.v4.app.Fragment implements AbsListView.OnItemClickListener {
+                        //NOTE: originally extended just 'Fragment'
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

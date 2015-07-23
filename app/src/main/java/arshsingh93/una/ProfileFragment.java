@@ -28,6 +28,9 @@ public class ProfileFragment extends Fragment {
 
     public static final String SHOW = "show";
 
+    public static final String SHOW_COLOR_OPTIONS = "show color options";
+
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -84,7 +87,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), NoTabActivity.class);
-                intent.putExtra(SHOW, "Settings");
+                intent.putExtra(SHOW, SHOW_COLOR_OPTIONS);
                 startActivity(intent);
             }
         });
