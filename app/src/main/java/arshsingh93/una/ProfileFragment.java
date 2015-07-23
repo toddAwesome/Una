@@ -1,12 +1,15 @@
 package arshsingh93.una;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,9 +25,19 @@ public class ProfileFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+
+    public static final String SHOW = "show";
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+
+
+
+
+
+    Button settingButton;
 
     private OnFragmentInteractionListener mListener;
 
@@ -63,8 +76,34 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View v = inflater.inflate(R.layout.fragment_profile, container, false);
+
+
+        settingButton = (Button) v.findViewById(R.id.profileSettingButton);
+        settingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), NoTabActivity.class);
+                intent.putExtra(SHOW, "Settings");
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
+
+        return v;
     }
+
+
+
+
+
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -79,6 +118,7 @@ public class ProfileFragment extends Fragment {
         try {
             mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
+            Log.e(ProfileFragment.class.getSimpleName(), "EXCEPTION inside onAttach of profile fragment: " + e);
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
         }

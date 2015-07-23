@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
@@ -23,10 +24,10 @@ import android.view.ViewGroup;
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
-public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
-    //this is tabCha branch
-    private static final String TAG = MainActivity.class.getSimpleName();
+public class MainActivity extends AppCompatActivity implements ActionBar.TabListener,
+        ProfileFragment.OnFragmentInteractionListener {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -38,15 +39,29 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
      */
     SectionsPagerAdapter mSectionsPagerAdapter;
 
+
     /**
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
 
+    ViewPagerAdapter myViewPagerAdapter;
+    private CharSequence mTitles[]={"Courses","Instructors"}; //ADDED THIS
+    private int mTabs =2; //ADDED THIS
+
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
@@ -73,10 +88,18 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        myViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),mTitles, mTabs); //ADDED THIS
+
+
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        //mViewPager.setAdapter(myViewPagerAdapter); //ADDED THIS
+
+
+
+
 
         // When swiping between different sections, select the corresponding
         // tab. We can also use ActionBar.Tab#select() to do this if we have
@@ -87,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
                 actionBar.setSelectedNavigationItem(position);
             }
         });
+
 
         // For each of the sections in the app, add a tab to the action bar.
         for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
@@ -99,7 +123,11 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
+
+
     }
+
+
 
 
     @Override
@@ -150,12 +178,14 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         startActivity(intent);
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
+
+    }
 
 
 //==============
-
-
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -165,8 +195,10 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
         private Fragment[] myMainFragments;
 
-        public SectionsPagerAdapter(android.support.v4.app.FragmentManager fm) {
+        public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
+            Log.e(TAG, "here in sectionsPagerAdapter constructor, before profilefragment construction");
+            myMainFragments = new Fragment[3];
             myMainFragments[2] = new ProfileFragment();
         }
 
@@ -174,12 +206,11 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            
-            /**
+
             if (position == 2) {
                 return myMainFragments[2];
             }
-            **/
+
 
             return PlaceholderFragment.newInstance(position + 1);
 
@@ -204,7 +235,76 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             }
             return null;
         }
+
     }
+
+    //READY TO COPY CSSAppWithFragment=============================--------------------======================---====---===---===---===
+
+
+
+    private class ViewPagerAdapter extends FragmentStatePagerAdapter {
+
+        public Fragment[] getFragments() {
+            return mFragments;
+        }
+
+        private Fragment[] mFragments;
+        private CharSequence mTitles[]; // This will Store the Titles of the Tabs which are Going to be passed when ViewPagerAdapter is created
+        private int mTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
+
+        public void replaceFragment(Fragment fragment, int index) {
+            getSupportFragmentManager().beginTransaction().remove(mFragments[index]).commit();
+            mFragments[index] = fragment;
+            notifyDataSetChanged();
+        }
+
+        // Build a Constructor and assign the passed Values to appropriate values in the class
+        public ViewPagerAdapter(FragmentManager fm,CharSequence mTitles[], int mNumbOfTabsumb) {
+            super(fm);
+            mFragments = new Fragment[2];
+            mFragments[0] = PlaceholderFragment.newInstance(1); //this was previously set to 'new ProfileFragment()' but it caused errors.
+
+            mFragments[1] = PlaceholderFragment.newInstance(2);
+            this.mTitles = mTitles;
+            this.mTabs = mNumbOfTabsumb;
+
+        }
+
+        //This method return the fragment for the every position in the View Pager
+        @Override
+        public Fragment getItem(int position) {
+
+            return mFragments[position];
+
+        }
+
+
+        // This method return the titles for the Tabs in the Tab Strip
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mTitles[position];
+        }
+
+        // This method return the Number of tabs for the tabs Strip
+
+        @Override
+        public int getCount() {
+            return mTabs;
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+            return POSITION_NONE;
+        }
+
+    }
+
+
+
+
+
+    //READY, above ---------------================================--------------======================================------------====
 
     /**
      * A placeholder fragment containing a simple view.

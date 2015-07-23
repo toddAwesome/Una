@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="arshsingh93.una.ProfileFragment"
+    android:padding="20dp">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profilePicture"
+        android:src="@mipmap/ic_launcher"
+        android:maxHeight="200dp"
+        android:maxWidth="200dp"
+        android:minHeight="200dp"
+        android:minWidth="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="username"
+        android:id="@+id/usernameText"
+        android:layout_below="@+id/profilePicture"
+        android:layout_centerHorizontal="true"
+        android:textSize="22sp"
+        android:textColor="#00c373" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Involved with - - - - Groups"
+        android:id="@+id/profileGroupButton"
+        android:background="#00c373"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:padding="15dp"
+        android:layout_below="@+id/usernameText"
+        android:layout_alignLeft="@+id/profileSettingButton"
+        android:layout_alignStart="@+id/profileSettingButton"
+        android:layout_marginTop="25dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:id="@+id/profileSettingButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:padding="15dp"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:background="#00c373" />
+</RelativeLayout>
