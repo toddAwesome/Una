@@ -1,5 +1,6 @@
 package arshsingh93.una;
 
+import android.support.v4.app.FragmentManager;
 import android.app.ListFragment;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
@@ -18,13 +19,22 @@ public class NoTabActivity extends ActionBarActivity {
         setContentView(R.layout.activity_no_tab);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
-        Fragment fragment = null;
+        FragmentManager fm = getSupportFragmentManager();
+        Fragment fragment;
         Intent intent = getIntent();
+
         if (intent.getStringExtra(ProfileFragment.SHOW).equals(ProfileFragment.SHOW_COLOR_OPTIONS)) {
             fragment = new colorListFragment();
 
+        } else {
+            fragment = new colorListFragment();
         }
+
+        fm.beginTransaction() //caused crash
+                //.replace(R.id.non_tab_container, fragment)
+                //.add(R.id.non_tab_container, fragment) //note: .replace wont work either.
+                .commit();
+
 
     }
 

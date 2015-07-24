@@ -2,7 +2,7 @@ package arshsingh93.una;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +23,12 @@ import arshsingh93.una.dummy.DummyContent;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class colorListFragment extends android.support.v4.app.Fragment implements AbsListView.OnItemClickListener {
+public class colorListFragment extends Fragment implements AbsListView.OnItemClickListener {
                         //NOTE: originally extended just 'Fragment'
+
+
+
+
 
 
 

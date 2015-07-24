@@ -45,13 +45,11 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
      */
     ViewPager mViewPager;
 
+    /**
     ViewPagerAdapter myViewPagerAdapter;
     private CharSequence mTitles[]={"Courses","Instructors"}; //ADDED THIS
     private int mTabs =2; //ADDED THIS
-
-
-
-
+    **/
 
 
 
@@ -88,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        myViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),mTitles, mTabs); //ADDED THIS
+        //myViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),mTitles, mTabs); //ADDED THIS
 
 
 
@@ -238,7 +236,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
     }
 
-    //READY TO COPY CSSAppWithFragment=============================--------------------======================---====---===---===---===
+    /**READY TO COPY CSSAppWithFragment=============================--------------------======================---====---===---===---===
 
 
 
@@ -267,7 +265,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             mFragments[1] = PlaceholderFragment.newInstance(2);
             this.mTitles = mTitles;
             this.mTabs = mNumbOfTabsumb;
-
         }
 
         //This method return the fragment for the every position in the View Pager
@@ -299,12 +296,10 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         }
 
     }
+     READY, above ---------------================================--------------======================================------------====
+    **/
 
 
-
-
-
-    //READY, above ---------------================================--------------======================================------------====
 
     /**
      * A placeholder fragment containing a simple view.
