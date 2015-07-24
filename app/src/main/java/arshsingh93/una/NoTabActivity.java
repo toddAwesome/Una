@@ -32,10 +32,9 @@ public class NoTabActivity extends ActionBarActivity implements colorListFragmen
             fragment = new colorListFragment();
         }
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.replace(R.id.non_tab_container, fragment);
+        fragmentTransaction.add(R.id.non_tab_container, fragment); //changed from .replace
         fragmentTransaction.commit();
-                //.add(R.id.non_tab_container, fragment) //note: .replace wont work either.
-                //.commit();
+
 
 
     }

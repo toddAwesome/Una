@@ -1,4 +1,4 @@
-package arshsingh93.una.dummy;
+package arshsingh93.una.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public class DummyContent {
 
     static {
         // Add 3 sample items.
-        addItem(new DummyItem("1", "Item 1"));
+        addItem(new DummyItem("10", "Item 10"));
         addItem(new DummyItem("2", "Item 2"));
         addItem(new DummyItem("3", "Item 3"));
     }

@@ -12,7 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import arshsingh93.una.dummy.DummyContent;
+import arshsingh93.una.model.ColorTheme;
+import arshsingh93.una.model.DummyContent;
 
 /**
  * A fragment representing a list of Items.
@@ -24,7 +25,6 @@ import arshsingh93.una.dummy.DummyContent;
  * interface.
  */
 public class colorListFragment extends Fragment implements AbsListView.OnItemClickListener {
-                        //NOTE: originally extended just 'Fragment'
 
 
 
@@ -75,14 +75,22 @@ public class colorListFragment extends Fragment implements AbsListView.OnItemCli
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+        //setEmptyText("THERE IS NOTHING TO DISPLAY");// caused crash
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        // TODO: Change Adapter to display your content
+        /** TODO: Change Adapter to display your content
         mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        **/
+
+        mAdapter = new ArrayAdapter<ColorTheme.cTheme>(getActivity(), android.R.layout.simple_expandable_list_item_1,
+                android.R.id.text1, ColorTheme.CT_LIST);
+
     }
 
     @Override
