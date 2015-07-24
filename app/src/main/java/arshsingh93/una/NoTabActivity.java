@@ -1,17 +1,19 @@
 package arshsingh93.una;
 
+import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.app.ListFragment;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class NoTabActivity extends ActionBarActivity {
+public class NoTabActivity extends ActionBarActivity implements colorListFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +31,11 @@ public class NoTabActivity extends ActionBarActivity {
         } else {
             fragment = new colorListFragment();
         }
-
-        fm.beginTransaction() //caused crash
-                //.replace(R.id.non_tab_container, fragment)
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.non_tab_container, fragment);
+        fragmentTransaction.commit();
                 //.add(R.id.non_tab_container, fragment) //note: .replace wont work either.
-                .commit();
+                //.commit();
 
 
     }
@@ -65,5 +67,10 @@ public class NoTabActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(String id) {
+
     }
 }
