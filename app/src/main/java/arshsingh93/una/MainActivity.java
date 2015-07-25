@@ -142,6 +142,11 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+        }
+
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
             ParseUser.logOut();
@@ -183,7 +188,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     }
 
 
-//==============
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -236,68 +240,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
     }
 
-    /**READY TO COPY CSSAppWithFragment=============================--------------------======================---====---===---===---===
-
-
-
-    private class ViewPagerAdapter extends FragmentStatePagerAdapter {
-
-        public Fragment[] getFragments() {
-            return mFragments;
-        }
-
-        private Fragment[] mFragments;
-        private CharSequence mTitles[]; // This will Store the Titles of the Tabs which are Going to be passed when ViewPagerAdapter is created
-        private int mTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
-
-        public void replaceFragment(Fragment fragment, int index) {
-            getSupportFragmentManager().beginTransaction().remove(mFragments[index]).commit();
-            mFragments[index] = fragment;
-            notifyDataSetChanged();
-        }
-
-        // Build a Constructor and assign the passed Values to appropriate values in the class
-        public ViewPagerAdapter(FragmentManager fm,CharSequence mTitles[], int mNumbOfTabsumb) {
-            super(fm);
-            mFragments = new Fragment[2];
-            mFragments[0] = PlaceholderFragment.newInstance(1); //this was previously set to 'new ProfileFragment()' but it caused errors.
-
-            mFragments[1] = PlaceholderFragment.newInstance(2);
-            this.mTitles = mTitles;
-            this.mTabs = mNumbOfTabsumb;
-        }
-
-        //This method return the fragment for the every position in the View Pager
-        @Override
-        public Fragment getItem(int position) {
-
-            return mFragments[position];
-
-        }
-
-
-        // This method return the titles for the Tabs in the Tab Strip
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mTitles[position];
-        }
-
-        // This method return the Number of tabs for the tabs Strip
-
-        @Override
-        public int getCount() {
-            return mTabs;
-        }
-
-        @Override
-        public int getItemPosition(Object object) {
-            return POSITION_NONE;
-        }
-
-    }
-     READY, above ---------------================================--------------======================================------------====
-    **/
 
 
 

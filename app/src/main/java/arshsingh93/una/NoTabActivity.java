@@ -23,20 +23,18 @@ public class NoTabActivity extends ActionBarActivity implements colorListFragmen
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment;
-        Intent intent = getIntent();
 
+        Intent intent = getIntent();
         if (intent.getStringExtra(ProfileFragment.SHOW).equals(ProfileFragment.SHOW_COLOR_OPTIONS)) {
             fragment = new colorListFragment();
-
         } else {
             fragment = new colorListFragment();
         }
+
+
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.non_tab_container, fragment); //changed from .replace
         fragmentTransaction.commit();
-
-
-
     }
 
     @Override
@@ -53,10 +51,12 @@ public class NoTabActivity extends ActionBarActivity implements colorListFragmen
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
         }
+
+        //TODO add option to log out
 
         if (id == android.R.id.home)  {
             if (NavUtils.getParentActivityName(this) != null) {

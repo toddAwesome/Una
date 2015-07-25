@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="arshsingh93.una.SettingsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/settingHorizLayout"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Color Theme"
+            android:id="@+id/settingSelectColorButton"
+            android:textColor="#ffffff"
+            android:background="#00c373" />
+
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update profile"
+            android:id="@+id/settingUpdateProfileButton"
+            android:background="#00c373"
+            android:textColor="#ffffff" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/settingProgressBar"
+            android:layout_gravity="center_horizontal"
+            android:indeterminate="false" />
+
+    </LinearLayout>
+</RelativeLayout>
