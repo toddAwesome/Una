@@ -20,7 +20,6 @@ public class SettingsActivity extends AppCompatActivity {
 
     @InjectView(R.id.settingSelectColorButton) Button myColorButton;
     @InjectView(R.id.settingUpdateProfileButton) Button myProfUpdateButton;
-    @InjectView(R.id.settingProgressBar) ProgressBar myProgBar;
 
     public static final String SHOW = "show";
     public static final String SHOW_COLOR_OPTIONS = "show color options";
@@ -33,13 +32,6 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         ButterKnife.inject(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        myProgBar.setVisibility(View.INVISIBLE);
-
-
-
-        final ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
     }
 
@@ -56,31 +48,21 @@ public class SettingsActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
+        //TODO add option to log out
 
         return super.onOptionsItemSelected(item);
     }
 
-    private void toggleRefresh() {
-        if(myProgBar.getVisibility() == View.INVISIBLE) {
-            myProgBar.setVisibility(View.VISIBLE);
-        } else {
-            myProgBar.setVisibility(View.INVISIBLE);
-        }
-    }
 
     @OnClick (R.id.settingSelectColorButton)
     public void startSettings(View view) {
         Intent intent = new Intent(this, NoTabActivity.class);
         intent.putExtra(SHOW, SHOW_COLOR_OPTIONS);
         startActivity(intent);
-
     }
-
 
     @OnClick (R.id.settingUpdateProfileButton)
     public void startUpdateProfile(View view) {

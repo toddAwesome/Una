@@ -61,6 +61,8 @@ public class NoTabActivity extends ActionBarActivity implements colorListFragmen
         if (id == android.R.id.home)  {
             if (NavUtils.getParentActivityName(this) != null) {
                 NavUtils.navigateUpFromSameTask(this);
+
+                //figure out how to go to the previous page instead of directly to home.
             }
             return true;
         }

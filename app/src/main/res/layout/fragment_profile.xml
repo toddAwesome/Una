@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="arshsingh93.una.ProfileFragment"
-    android:padding="20dp">
+    android:padding="15dp">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -11,7 +11,7 @@
         android:id="@+id/profilePicture"
         android:src="@mipmap/ic_launcher"
         android:maxHeight="200dp"
-        android:maxWidth="200dp"
+        android:maxWidth="300dp"
         android:minHeight="200dp"
         android:minWidth="200dp"
         android:layout_alignParentTop="true"
@@ -24,32 +24,84 @@
         android:id="@+id/usernameText"
         android:layout_below="@+id/profilePicture"
         android:layout_centerHorizontal="true"
-        android:textSize="22sp"
+        android:textSize="24sp"
         android:textColor="#00c373" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Involved with - - - - Groups"
-        android:id="@+id/profileGroupButton"
-        android:background="#00c373"
-        android:textColor="#ffffff"
-        android:gravity="center"
-        android:padding="15dp"
-        android:layout_below="@+id/usernameText"
-        android:layout_alignLeft="@+id/profileSettingButton"
-        android:layout_alignStart="@+id/profileSettingButton"
-        android:layout_marginTop="25dp" />
-
-    <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Settings"
         android:id="@+id/profileSettingButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:padding="15dp"
         android:textColor="#ffffff"
         android:gravity="center"
-        android:background="#00c373" />
+        android:background="#00c373"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/usernameText"
+        android:layout_alignStart="@+id/usernameText" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/usernameText"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/profileHorizLayour"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/profileVertLayout1"
+            android:layout_weight="1"
+            android:weightSum="2">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0 \n groups"
+                android:id="@+id/profileGroupButton"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0 \n blogs"
+                android:id="@+id/profileBlogButton"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/profileVertLayout2"
+            android:layout_weight="1"
+            android:weightSum="2">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" 0 \n leading"
+                android:id="@+id/profileLeadButton"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="To be \n determined"
+                android:id="@+id/button4"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
 </RelativeLayout>

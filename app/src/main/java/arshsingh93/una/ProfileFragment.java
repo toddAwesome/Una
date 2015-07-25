@@ -20,30 +20,25 @@ import android.widget.Button;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
+
+
+    public static final String SHOW = "show"; //TODO delete this once settings button has been moved to options menu.
+    public static final String SHOW_COLOR_OPTIONS = "show color options";
+
+    Button settingButton;
+    private OnFragmentInteractionListener mListener;
+
+
+
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-
-    public static final String SHOW = "show";
-
-    public static final String SHOW_COLOR_OPTIONS = "show color options";
-
-
-    // TODO: Rename and change types of parameters
+    // TODO: Rename and change types of parameters..............or delete them
     private String mParam1;
     private String mParam2;
-
-
-
-
-
-
-    Button settingButton;
-
-    private OnFragmentInteractionListener mListener;
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -61,11 +56,9 @@ public class ProfileFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     public ProfileFragment() {
         // Required empty public constructor
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +67,12 @@ public class ProfileFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
+
+
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -92,19 +91,8 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
-
-
-
-
         return v;
     }
-
-
-
-
-
-
 
 
 
