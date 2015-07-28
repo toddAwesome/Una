@@ -64,7 +64,13 @@
                 android:id="@+id/profileGroupButton"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:background="#00c373"
+                android:textColor="#ffffff" />
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px" />
 
             <Button
                 android:layout_width="match_parent"
@@ -73,8 +79,14 @@
                 android:id="@+id/profileBlogButton"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:background="#00c373"
+                android:textColor="#ffffff" />
         </LinearLayout>
+
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -91,7 +103,13 @@
                 android:id="@+id/profileLeadButton"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:background="#00c373"
+                android:textColor="#ffffff" />
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px" />
 
             <Button
                 android:layout_width="match_parent"
@@ -100,7 +118,9 @@
                 android:id="@+id/button4"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:background="#00c373"
+                android:textColor="#ffffff" />
         </LinearLayout>
     </LinearLayout>
 

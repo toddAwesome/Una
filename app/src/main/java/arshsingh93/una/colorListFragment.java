@@ -26,6 +26,16 @@ import arshsingh93.una.model.DummyContent;
  */
 public class colorListFragment extends Fragment implements AbsListView.OnItemClickListener {
 
+    private OnFragmentInteractionListener mListener;
+    /**
+     * The fragment's ListView/GridView.
+     */
+    private AbsListView mListView;
+    /**
+     * The Adapter which will be used to populate the ListView/GridView with
+     * Views.
+     */
+    private ListAdapter mAdapter;
 
 
 
@@ -36,24 +46,9 @@ public class colorListFragment extends Fragment implements AbsListView.OnItemCli
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
-
-    /**
-     * The fragment's ListView/GridView.
-     */
-    private AbsListView mListView;
-
-    /**
-     * The Adapter which will be used to populate the ListView/GridView with
-     * Views.
-     */
-    private ListAdapter mAdapter;
-
     // TODO: Rename and change types of parameters
     public static colorListFragment newInstance(String param1, String param2) {
         colorListFragment fragment = new colorListFragment();
@@ -63,7 +58,6 @@ public class colorListFragment extends Fragment implements AbsListView.OnItemCli
         fragment.setArguments(args);
         return fragment;
     }
-
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -71,10 +65,11 @@ public class colorListFragment extends Fragment implements AbsListView.OnItemCli
     public colorListFragment() {
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         //setEmptyText("THERE IS NOTHING TO DISPLAY");// caused crash
 
@@ -82,11 +77,6 @@ public class colorListFragment extends Fragment implements AbsListView.OnItemCli
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        /** TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
-        **/
 
         mAdapter = new ArrayAdapter<ColorTheme.cTheme>(getActivity(), android.R.layout.simple_expandable_list_item_1,
                 android.R.id.text1, ColorTheme.CT_LIST);

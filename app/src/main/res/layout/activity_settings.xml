@@ -34,5 +34,17 @@
             android:background="#00c373"
             android:textColor="#ffffff" />
 
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Statistics"
+            android:id="@+id/settingStatButton"
+            android:textColor="#ffffff"
+            android:background="#00c373" />
+
     </LinearLayout>
 </RelativeLayout>
