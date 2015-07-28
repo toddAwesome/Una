@@ -10,6 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.parse.ParseUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,7 +29,9 @@ public class ProfileFragment extends Fragment {
     public static final String SHOW_COLOR_OPTIONS = "show color options";
 
     Button settingButton;
+    TextView username;
     private OnFragmentInteractionListener mListener;
+
 
 
 
@@ -80,6 +85,10 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        username = (TextView) v.findViewById(R.id.profileUsernameText);
+
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        username.setText( (String) currentUser.get("origName")); //just added this.
 
         settingButton = (Button) v.findViewById(R.id.profileSettingButton);
         settingButton.setOnClickListener(new View.OnClickListener() {

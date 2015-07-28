@@ -11,16 +11,24 @@ import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 
 public class NoTabActivity extends ActionBarActivity implements colorListFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
+       /** getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN); **/ //this hides the small bar at the very top (with the battery,etc.).
+        getSupportActionBar().hide();
+
         setContentView(R.layout.activity_no_tab);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment;
 
@@ -37,6 +45,14 @@ public class NoTabActivity extends ActionBarActivity implements colorListFragmen
         fragmentTransaction.commit();
     }
 
+
+    @Override
+    public void onFragmentInteraction(String id) {
+
+    }
+
+
+    /**
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -56,22 +72,22 @@ public class NoTabActivity extends ActionBarActivity implements colorListFragmen
             startActivity(intent);
         }
 
-        //TODO add option to log out
 
-        if (id == android.R.id.home)  {
-            if (NavUtils.getParentActivityName(this) != null) {
-                NavUtils.navigateUpFromSameTask(this);
+
+        //if (id == android.R.id.home)  {
+            //if (NavUtils.getParentActivityName(this) != null) {
+              //  NavUtils.navigateUpFromSameTask(this);
 
                 //figure out how to go to the previous page instead of directly to home.
-            }
-            return true;
-        }
+           // } NOTE: learned that the up button takes the user a whole screen previous whereas the back button
+                //...(which is on all android devices) takes the user back only a little bit. Its better to remove the bar completely.
+          //  return true;
+       // }
 
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onFragmentInteraction(String id) {
+ **/
 
-    }
+
 }
