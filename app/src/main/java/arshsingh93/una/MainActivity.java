@@ -27,41 +27,20 @@ import com.parse.ParseUser;
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener,
         ProfileFragment.OnFragmentInteractionListener {
 
+
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     SectionsPagerAdapter mSectionsPagerAdapter;
-
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     ViewPager mViewPager;
-
-    /**
-    ViewPagerAdapter myViewPagerAdapter;
-    private CharSequence mTitles[]={"Courses","Instructors"}; //ADDED THIS
-    private int mTabs =2; //ADDED THIS
-    **/
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TheUtils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
 
-
-
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
-
 
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser == null) {
@@ -85,17 +64,10 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        //myViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),mTitles, mTabs); //ADDED THIS
-
-
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        //mViewPager.setAdapter(myViewPagerAdapter); //ADDED THIS
-
-
-
 
 
         // When swiping between different sections, select the corresponding
@@ -150,12 +122,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         if (id == R.id.action_logout) {
             ParseUser.logOut();
             navigateToLogin();
-        }
-
-        if (id == R.id.action_red) {
-            
-            setTheme(R.style.RedTheme);
-            recreate();
         }
 
         return super.onOptionsItemSelected(item);

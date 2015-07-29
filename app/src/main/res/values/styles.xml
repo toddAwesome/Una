@@ -11,6 +11,8 @@
 
     <style name="BlueTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">#ff00aac3</item>
+        <item name="android:background">#3287ceeb</item>
+
     </style>
 
 
@@ -23,6 +25,7 @@
 
     <style name="RedTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">#ffc35b4e</item>
+        <item name="android:background">#28ff6c6e</item>
     </style>
 
 

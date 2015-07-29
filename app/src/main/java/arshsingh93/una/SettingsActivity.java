@@ -28,27 +28,36 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.e(this.getClass().getSimpleName(), "onCreate");
         //getSupportActionBar().hide();
+        TheUtils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_settings);
         ButterKnife.inject(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     @OnClick (R.id.settingBlueButton)
     public void changeToBlue(View view) {
-        setTheme(R.style.BlueTheme);
+        Log.e(this.getClass().getSimpleName(), "Clicked blue button");
+        TheUtils.changeToTheme(this, TheUtils.THEME_BLUE);
+
     }
 
     @OnClick (R.id.settingGreenButton)
     public void changeToGreen(View view) {
-        setTheme(R.style.GreenTheme);
+        Log.e(this.getClass().getSimpleName(), "Clicked green button");
+        TheUtils.changeToTheme(this, TheUtils.THEME_GREEN);
     }
 
     @OnClick (R.id.settingRedButton)
     public void changeToRed(View view) {
-        setTheme(R.style.RedTheme);
         Log.e(this.getClass().getSimpleName(), "Clicked red button");
-        setContentView(view);
+        TheUtils.changeToTheme(this, TheUtils.THEME_RED);
     }
 
 

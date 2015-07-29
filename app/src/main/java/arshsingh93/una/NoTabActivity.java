@@ -21,25 +21,21 @@ public class NoTabActivity extends ActionBarActivity implements colorListFragmen
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
        /** getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); **/ //this hides the small bar at the very top (with the battery,etc.).
-        //getSupportActionBar().hide();
-
+        getSupportActionBar().hide();
+        TheUtils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_no_tab);
-
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment;
-
         Intent intent = getIntent();
         if (intent.getStringExtra(ProfileFragment.SHOW).equals(ProfileFragment.SHOW_COLOR_OPTIONS)) {
             fragment = new colorListFragment();
         } else {
             fragment = new colorListFragment();
         }
-
-
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.non_tab_container, fragment); //changed from .replace
         fragmentTransaction.commit();
