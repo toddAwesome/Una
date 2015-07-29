@@ -4,47 +4,51 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="arshsingh93.una.SettingsActivity">
+    tools:context="arshsingh93.una.SettingsActivity"
+    android:background="#2855ff95">
 
     <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/settingHorizLayout"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:id="@+id/linearLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Color Theme"
-            android:id="@+id/settingSelectColorButton"
-            android:textColor="#ffffff"
-            android:background="#00c373" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20px" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Update profile"
-            android:id="@+id/settingUpdateProfileButton"
-            android:background="#00c373"
-            android:textColor="#ffffff" />
+            android:text="Blue"
+            android:id="@+id/settingBlueButton"
+            android:layout_weight="1"
+            android:background="#ff00aac3" />
 
         <Space
             android:layout_width="20px"
             android:layout_height="20px" />
 
         <Button
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Statistics"
-            android:id="@+id/settingStatButton"
-            android:textColor="#ffffff"
-            android:background="#00c373" />
+            android:text="Green"
+            android:id="@+id/settingGreenButton"
+            android:layout_weight="1"
+            android:background="#56c367" />
+
+        <Space
+            android:layout_width="20px"
+            android:layout_height="20px" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Red"
+            android:id="@+id/settingRedButton"
+            android:layout_weight="1"
+            android:background="#ffc35b4e" />
 
     </LinearLayout>
+
 </RelativeLayout>

@@ -3,6 +3,7 @@ package arshsingh93.una;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,26 +39,6 @@ public class colorListFragment extends Fragment implements AbsListView.OnItemCli
     private ListAdapter mAdapter;
 
 
-
-
-
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-    // TODO: Rename and change types of parameters
-    public static colorListFragment newInstance(String param1, String param2) {
-        colorListFragment fragment = new colorListFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -72,11 +53,6 @@ public class colorListFragment extends Fragment implements AbsListView.OnItemCli
         super.onCreate(savedInstanceState);
 
         //setEmptyText("THERE IS NOTHING TO DISPLAY");// caused crash
-
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
 
         mAdapter = new ArrayAdapter<ColorTheme.cTheme>(getActivity(), android.R.layout.simple_expandable_list_item_1,
                 android.R.id.text1, ColorTheme.CT_LIST);
@@ -93,7 +69,24 @@ public class colorListFragment extends Fragment implements AbsListView.OnItemCli
         ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
 
         // Set OnItemClickListener so we can be notified on item clicks
-        mListView.setOnItemClickListener(this);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //change color
+                Log.e(this.getClass().getSimpleName(), "position is " + position);
+                if (position == 0) {
+                    getActivity().setTheme(R.style.GreenTheme);
+
+                } else if (position == 1) {
+                    getActivity().setTheme(R.style.RedTheme);
+                } else if (position == 2) {
+                    getActivity().setTheme(R.style.BlueTheme);
+                }
+
+                //save preference
+
+            }
+        });
 
         return view;
     }

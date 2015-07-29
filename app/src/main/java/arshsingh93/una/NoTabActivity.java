@@ -24,7 +24,7 @@ public class NoTabActivity extends ActionBarActivity implements colorListFragmen
 
        /** getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); **/ //this hides the small bar at the very top (with the battery,etc.).
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         setContentView(R.layout.activity_no_tab);
 

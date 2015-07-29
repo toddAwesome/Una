@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
 
 
-
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
 
@@ -151,6 +150,12 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         if (id == R.id.action_logout) {
             ParseUser.logOut();
             navigateToLogin();
+        }
+
+        if (id == R.id.action_red) {
+            
+            setTheme(R.style.RedTheme);
+            recreate();
         }
 
         return super.onOptionsItemSelected(item);
