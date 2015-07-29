@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -65,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
 
         myUsername = (EditText) findViewById(R.id.usernameField);
         myPassword = (EditText) findViewById(R.id.passwordField);
-        myLoginButton = (Button) findViewById(R.id.loginButton);
+        myLoginButton = (Button) findViewById(R.id.mainButton);
         myLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,10 +109,6 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
 
     }
 
